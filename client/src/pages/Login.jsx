@@ -9,6 +9,12 @@ export default function Login() {
     email:'',
     password:'',
   })
+  const handleChange = (e) => {
+    setData({
+      ...data,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const loginUser= async(e)=>{
     e.preventDefault()
@@ -32,12 +38,27 @@ export default function Login() {
   }
   return (
     <div>
-    <form onSubmit={loginUser}>
-    <label>Email</label>
-    <input type='email' placeholder="Enter email..." value={data.email}  onChange={(e) => setData({...data,email:e.target.value})} style={{ marginBottom: '10px', width: '100%' }} />
-    <label>Password</label>
-    <input type='password' placeholder="Enter password..." value={data.password}  onChange={(e) => setData({...data,password:e.target.value})} style={{ marginBottom: '10px', width: '100%' }} />
-    <button type='submit'>Submit</button>
-    </form></div>
-  )
+      <form onSubmit={loginUser}>
+        <div>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            name="email"
+            value={data.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            value={data.password}
+            onChange={handleChange}
+          />
+        </div>
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  );
 }

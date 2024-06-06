@@ -6,8 +6,8 @@ const test = (req,res)=> {
     res.json('test is working')
 }
 const registerUser = async(req,res)=> {
+    const{name,email,password} =req.body;
     try{
-        const{name,email,password} =req.body;
         if(!name){
             return res.json({
                 error:'name is required'
